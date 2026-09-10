@@ -1,0 +1,17 @@
+/* ========================================
+   MM10 ARCHIVE — BASE
+   ======================================== */
+
+body {
+    background: var(--color-background);
+    color: var(--color-black);
+
+    font-family: var(--font-body);
+
+    overflow-x: hidden;
+}
+
+::selection {
+    background: var(--color-black);
+    color: var(--color-background);
+}
