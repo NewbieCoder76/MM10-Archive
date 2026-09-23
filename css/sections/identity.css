@@ -1,0 +1,24 @@
+.identity {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.identity h2 {
+  font: 12vw/0.8 var(--display);
+  letter-spacing: -0.05em;
+}
+
+.facts {
+  border-left: var(--line);
+  padding-left: 20px;
+}
+
+.fact {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: var(--line);
+  padding: 18px 0;
+  font-size: 12px;
+}
