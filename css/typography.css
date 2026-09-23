@@ -1,0 +1,14 @@
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  text-transform: uppercase;
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+}
+
+.text-mono {
+  font-family: var(--mono);
+}
+
+.text-display {
+  font-family: var(--display);
+}
