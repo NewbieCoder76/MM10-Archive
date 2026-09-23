@@ -1,0 +1,68 @@
+/* Preloader & Overlay Styling */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--ink, #111111);
+  color: var(--paper, #eeeae0);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 20px;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loader-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.loader-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-counter {
+  font-family: var(--display, sans-serif);
+  font-size: 22vw;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+}
+
+.loader-bar-container {
+  width: min(80vw, 500px);
+  height: 4px;
+  border: 1px solid var(--paper, #eeeae0);
+  margin-top: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--accent, #ff3b00);
+  transition: width 0.1s linear;
+}
+
+.loader-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  opacity: 0.7;
+}
