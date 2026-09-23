@@ -1,0 +1,41 @@
+.career {
+  height: 160vh;
+}
+
+.track {
+  position: sticky;
+  top: 100px;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.line {
+  display: flex;
+  align-items: center;
+  gap: 8vw;
+  width: max-content;
+  will-change: transform;
+}
+
+.year {
+  font: 18vw/0.8 var(--display);
+}
+
+.club {
+  border: var(--line);
+  padding: 20px;
+  width: 280px;
+  min-width: 280px;
+}
+
+.club h3 {
+  font-size: 45px;
+}
+
+.club p {
+  margin-top: 25px;
+  font-size: 11px;
+  line-height: 1.5;
+}
