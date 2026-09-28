@@ -1,105 +1,30 @@
-/* ========================================
-   MM10 ARCHIVE — HERO ANIMATION
-======================================== */
+const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
-const heroTitle = document.querySelector(".hero-title");
-const heroImage = document.querySelector(".hero-image");
-const heroMeta = document.querySelector(".hero-meta");
-const heroScroll = document.querySelector(".hero-scroll");
+export function initHeroAnimation() {
+  const hero = document.querySelector('.hero');
+  const title = document.querySelector('#title');
+  const photo = document.querySelector('#photo');
 
-window.addEventListener("heroScroll", (event) => {
+  if (!hero || !title || !photo) return;
 
-    const { progress } = event.detail;
+  return function updateHero() {
+    const heroProgress = clamp(-hero.getBoundingClientRect().top / (hero.offsetHeight - window.innerHeight), 0, 1);
+    
+    title.style.transform = `translate(${-heroProgress * 7}vw, ${-heroProgress * 18}vh) scale(${1 - heroProgress * 0.22})`;
+    photo.style.transform = `translate(${-heroProgress * 18}vw, ${heroProgress * 4}vh) scale(${1 + heroProgress * 0.16})`;
+  };
+}
 
+export function initCareerScroll() {
+  const career = document.querySelector('.career');
+  const line = document.querySelector('#line');
 
-    /* ====================================
-       TITLE
-    ==================================== */
+  if (!career || !line) return;
 
-    if (heroTitle) {
+  return function updateCareer() {
+    const careerProgress = clamp(-career.getBoundingClientRect().top / (career.offsetHeight - window.innerHeight), 0, 1);
+    const scrollDistance = Math.max(0, line.scrollWidth - window.innerWidth + 100);
 
-        /*
-         * Slowly scale the name down.
-         */
-
-        const scale = 1 - (progress * 0.28);
-
-        /*
-         * Move the title slightly left.
-         */
-
-        const translateX = progress * -12;
-
-        heroTitle.style.transform = `
-            translateX(${translateX}vw)
-            scale(${scale})
-        `;
-    }
-
-
-    /* ====================================
-       IMAGE
-    ==================================== */
-
-    if (heroImage) {
-
-        /*
-         * Image begins slightly lower
-         * and rises as we scroll.
-         */
-
-        const translateY = -50 - (progress * 12);
-
-        /*
-         * Image grows slightly.
-         */
-
-        const scale = 1 + (progress * 0.12);
-
-        heroImage.style.transform = `
-            translateY(${translateY}%)
-            scale(${scale})
-        `;
-    }
-
-
-    /* ====================================
-       META DATA
-    ==================================== */
-
-    if (heroMeta) {
-
-        /*
-         * Metadata starts fading once
-         * the scroll sequence begins.
-         */
-
-        const opacity = 1 - (progress * 1.4);
-
-        const translateY = progress * 30;
-
-        heroMeta.style.opacity = Math.max(0, opacity);
-
-        heroMeta.style.transform = `
-            translateY(${translateY}px)
-        `;
-    }
-
-
-    /* ====================================
-       SCROLL INDICATOR
-    ==================================== */
-
-    if (heroScroll) {
-
-        /*
-         * The "scroll to explore" prompt
-         * disappears quickly.
-         */
-
-        const opacity = 1 - (progress * 4);
-
-        heroScroll.style.opacity = Math.max(0, opacity);
-    }
-
-});
+    line.style.transform = `translateX(${-careerProgress * scrollDistance}px)`;
+  };
+}
